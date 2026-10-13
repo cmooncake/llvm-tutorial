@@ -1,4 +1,4 @@
-# 第 04 章：新 Pass Manager、分析与变换
+# 第 04 章：LLVM 分析与变换 Pass
 
 预计用时：6–8 小时。先修：第 03 章。
 
@@ -10,7 +10,7 @@
 - 通过 PassBuilder pipeline parser 把插件接入 `opt`；
 - 为变换编写“应变换”和“不得变换”测试。
 
-## 4.1 两种责任
+## 4.1 分析与变换
 
 分析回答问题而不改变 IR，例如指令数量、循环信息或支配树。变换修改 IR，例如删除冗余运算。变换之后，之前缓存的分析结果可能失效；`PreservedAnalyses` 就是变换对分析管理器作出的契约。
 
@@ -38,7 +38,7 @@ opt -load-pass-plugin "$PLUGIN" \
   -S test/add-zero.ll
 ```
 
-## 4.3 正确性边界
+## 4.3 变换的正确性条件
 
 `x + 0 -> x` 对整数 `add` 成立，也不受 `nsw/nuw` 影响，因为替换不会新增溢出行为。下列相似变换不能未经论证直接照搬：
 
@@ -64,11 +64,11 @@ opt -load-pass-plugin "$PLUGIN" \
 
 不要用完整 IR golden file 锁死无关格式。
 
-## 引导实验：分析复用
+## 实验 4：分析结果与失效
 
 把 instruction count 提取为真正的 `AnalysisInfoMixin` 分析，并让 printer 通过 `FunctionAnalysisManager::getResult` 获取结果。然后在 `remove-add-zero` 前后打印数量，解释为什么结果需要失效或重新计算。
 
-## 独立挑战
+## 编程练习：局部 IR 变换
 
 任选一个实现：
 
@@ -78,7 +78,7 @@ opt -load-pass-plugin "$PLUGIN" \
 
 要求写出 correctness argument：前置条件、保持的语义、可能受 poison/flags/side effects 影响的部分。
 
-## 提交物与验收
+## 提交要求
 
 - 可由 `opt` 加载的插件；
 - 至少四个正向和四个负向检查；
@@ -86,7 +86,7 @@ opt -load-pass-plugin "$PLUGIN" \
 - `PreservedAnalyses` 与实际修改相符；
 - 一页 correctness note。
 
-## 常见失败
+## 诊断说明
 
 - 插件能编译但 `opt` 找不到 pass：检查导出的 `llvmGetPassPluginInfo` 和 pipeline 名称。
 - Windows DLL 加载失败：工具与插件必须使用 ABI 兼容的 LLVM 构建配置。

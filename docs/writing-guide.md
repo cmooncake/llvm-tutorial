@@ -25,6 +25,12 @@
 
 学习目标、提交物和验收条件可以保留，但它们不代替正文。
 
+## 标题与层级
+
+课程、章节和一级小节使用稳定的学术主题名词，例如“词法分析”“静态单赋值形式”“调用约定”。标题应直接标明知识范围，便于课程表、引用和多年维护。
+
+不要把 lecture 标题写成博客式行动句或情绪化问题，例如“让 LLVM 接受你的第一个函数”“终于开始写编译器”。叙事性的引入放在该节正文中。实验统一使用“实验 N：主题”，作业使用“编程作业 N：主题”，项目使用“课程项目：主题”。
+
 ## 示例代码
 
 - 示例必须足够短，使学生能逐行解释；
@@ -49,10 +55,20 @@
 ## 每章完成前的编辑检查
 
 - 开头是否提出了真实问题？
+- 标题是否准确标示学术主题，而非追求吸引力？
 - 新术语是否在首次出现时解释？
 - 段落之间是否有因果或递进关系？
 - 学生是否知道每条命令应该观察什么？
 - 是否区分 LLVM 的结构正确性和源语言语义正确性？
 - 练习是否有明确证据证明完成？
 - 删除所有列表后，正文是否仍然构成一条完整讲解？
+
+## 课程组织参考
+
+本课程的材料分层与主题命名参考以下公开课程。参考的是组织原则，不复制其讲义正文或作业内容。
+
+- [MIT 6.035 Computer Language Engineering — Lecture Notes](https://ocw.mit.edu/courses/6-035-computer-language-engineering-spring-2010/pages/lecture-notes/)
+- [Stanford CS143 Compilers — Lectures and Assignments](https://web.stanford.edu/class/cs143/)
+- [CMU 15-411/611 Compiler Design — Schedule](https://www.cs.cmu.edu/~411/schedule.html)
+- [UC Berkeley CS 164 — Programming Languages and Compilers](https://www2.eecs.berkeley.edu/Courses/CS164/)
 

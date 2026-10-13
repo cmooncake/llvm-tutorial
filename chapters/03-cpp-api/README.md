@@ -1,4 +1,4 @@
-# 第 03 章：用 LLVM C++ API 构造 IR
+# 第 03 章：使用 C++ API 构造 LLVM IR
 
 预计用时：5–7 小时。先修：第 01–02 章、C++ RAII。
 
@@ -53,7 +53,7 @@ FileCheck chapters/03-cpp-api/test/mul-add.check --input-file=generated.ll
 
 注意：`verifyModule` 返回 `true` 表示发现错误，这与许多“成功返回 true”的 API 相反。
 
-## 引导实验：生成 classify
+## 实验 3：生成整数分类函数
 
 把第 01 章的 `classify` 参考 IR 用 C++ API 生成。要求：
 
@@ -63,11 +63,11 @@ FileCheck chapters/03-cpp-api/test/mul-add.check --input-file=generated.ll
 - `verifyFunction` 失败时程序返回非零；
 - 新增 FileCheck 检查控制流形状，但不锁死所有临时变量编号。
 
-## 独立挑战：循环求和
+## 编程练习：生成循环求和函数
 
 生成第 02 章的 `sum_to`，并实现一个小 helper：在向 block 添加 terminator 前检查它是否已经终结。思考 helper 应属于教学工具层还是 LLVM 本身。
 
-## 生命周期练习
+## 复习题：对象生命周期
 
 回答：
 
@@ -76,7 +76,7 @@ FileCheck chapters/03-cpp-api/test/mul-add.check --input-file=generated.ll
 3. 一个 context 中的 type 能否直接放入另一个 context 的 module？
 4. 为什么 AST 不应该长期保存 `llvm::Value*`？
 
-## 提交物与验收
+## 提交要求
 
 - `classify` 和 `sum_to` 的 API 生成实现；
 - FileCheck 测试；
@@ -84,7 +84,7 @@ FileCheck chapters/03-cpp-api/test/mul-add.check --input-file=generated.ll
 - CMake 输出显示使用受支持 LLVM 版本；
 - 代码没有全局 context/module/builder。
 
-## 常见失败
+## 诊断说明
 
 - builder insertion point 仍在旧 block：每次开始生成 block 都明确设置插入点。
 - block 已有 terminator 后继续插入：生成语句时传播“当前块已终结”状态。

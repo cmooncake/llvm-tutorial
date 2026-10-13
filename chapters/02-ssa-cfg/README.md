@@ -1,4 +1,4 @@
-# 第 02 章：SSA、CFG、支配关系与 phi
+# 第 02 章：控制流与静态单赋值形式
 
 预计用时：5–7 小时。先修：第 01 章。
 
@@ -10,7 +10,7 @@
 - 理解 memory form 与 SSA form 的关系；
 - 正确 lower 短路逻辑和循环。
 
-## 2.1 四个问题
+## 2.1 定义、使用与支配关系
 
 看到一个 SSA use 时，依次问：
 
@@ -21,7 +21,7 @@
 
 这四个问题比“变量现在是什么值”更适合分析 LLVM IR。
 
-## 2.2 If 的 merge
+## 2.2 控制流汇合与 Phi 指令
 
 源程序：
 
@@ -42,7 +42,7 @@ merge:
 
 phi 在概念上发生于进入块的边上，并且必须集中在块的开头。
 
-## 2.3 循环的 loop-carried value
+## 2.3 循环携带值
 
 ```llvm
 loop:
@@ -56,11 +56,11 @@ body:
 
 `%i` 的第二个 incoming value 来自回边。虽然 `%next` 在文本上位于 phi 之后，但它在 `%body -> %loop` 这条边上已经可用。
 
-## 2.4 短路控制流
+## 2.4 短路求值
 
 `a && f()` 不能无条件调用 `f` 再做 `and`。正确 lowering 必须只在 `a` 为真时求值右侧，并在 merge block 用 phi 合并 `false` 与右侧结果。`||` 同理但方向相反。
 
-## 引导实验 A：循环求和
+## 实验 2A：循环求和
 
 完成 `exercises/sum-to.ll`，实现 `[0, n)` 求和；当 `n <= 0` 时返回 0。限制：不得使用 `alloca`。
 
@@ -73,7 +73,7 @@ opt -passes='print<domtree>' -disable-output exercises/sum-to.ll
 
 画出 CFG，标注 dominator tree 和回边。
 
-## 引导实验 B：短路副作用
+## 实验 2B：短路求值与副作用
 
 声明：
 
@@ -83,7 +83,7 @@ declare i1 @probe()
 
 实现 `and_then(i1 %lhs)`，仅在 `%lhs` 为真时调用 `probe`。用一个带计数器的 C harness 证明短路发生，而不是只检查返回值。
 
-## mem2reg 对照实验
+## 实验 2C：Mem2Reg 与 SSA 构造
 
 先用 `alloca/load/store` 写循环，再运行：
 
@@ -93,7 +93,7 @@ opt -passes='mem2reg' -S memory-form.ll -o ssa-form.ll
 
 比较 phi 的位置，并回答 mem2reg 需要哪些前提。它不是任意内存优化器，通常提升入口块中、使用方式足够简单的局部 alloca。
 
-## 独立挑战
+## 编程练习：迭代 Fibonacci
 
 实现迭代 Fibonacci：
 
@@ -105,7 +105,7 @@ fib(n) = fib(n-1) + fib(n-2), n >= 2
 
 要求只使用一个循环，不使用内存。为 `n < 0` 自行规定行为并记录。
 
-## 提交物与验收
+## 提交要求
 
 - `sum-to.ll`、短路实验、memory/SSA 对照和 Fibonacci；
 - 每个函数的 CFG 图或文字邻接表；

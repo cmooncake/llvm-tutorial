@@ -1,4 +1,4 @@
-# LLVM 大项目教程
+# LLVM 编译器构造
 
 这是一门面向“学过 C/C++、数据结构与基础编译原理，但没有 LLVM 工程经验”的项目制课程。
 
@@ -11,16 +11,13 @@
 
 最终成果应是一项可以演示、测试、调试和扩展的工程，而不只是若干 API 示例。
 
-## 课程组织原则
+## 课程说明
 
-1. **先建立正确心智模型，再调用 LLVM API**：学生应能解释 IR、SSA、CFG、ABI 和数据布局，而不是只会拼 Builder 调用。
-2. **每章只引入一个主要困难**：语言设计、编译原理、LLVM API 和工程工具不能同时陡增。
-3. **练习可独立验收，成果可累积复用**：前半程的小实验用于隔离概念；后半程把成果迁移进 MiniLang。
-4. **从第一天就强调可观察性**：打印 IR、验证 IR、保存中间产物、写负向测试和检查诊断信息。
-5. **优化晚于正确性**：先有清晰的前端/中端边界和解释性测试，再做 Pass 与性能实验。
-6. **基础主线稳定，高阶内容分轨**：所有学生完成核心编译器；GC、闭包、调试信息、自定义 Pass 等作为荣誉扩展。
+课程同时包含编译器原理与工程实践。前半部分通过短实验学习 LLVM IR、SSA、控制流和 Pass；中段实现 MiniLang 的词法、语法和静态语义；后半部分完成代码生成、运行时、JIT/AOT、优化和测试。MLIR 与异构代码生成作为完成核心项目后的选修单元。
 
-## 建议先修知识
+教学设计、授课节奏和评分建议见 [教师指南](docs/teaching-guide.md) 与 [评分标准](docs/assessment.md)。
+
+## 先修要求
 
 - 熟练使用一种系统语言（课程主线建议 C++20）
 - 数据结构、递归、图遍历、基本自动机概念
@@ -29,7 +26,7 @@
 
 不要求学生事先了解 LLVM、SSA、目标文件格式或 JIT。
 
-## 推荐节奏
+## 课程安排
 
 建议 14–16 周，每周一次讲授和一次实验：
 
@@ -41,48 +38,38 @@
 | D. 最终项目 | 12–16 | 集成完整语言、优化、诊断、文档与演示 |
 | E. 前沿专题（选修） | 额外 3–6 | MLIR、多层 lowering、异构编译与现代 JIT |
 
-## 目录
+## 课程材料
 
-```text
-llvm-tutorial/
-├── README.md                 # 课程入口
-├── docs/
-│   ├── curriculum.md         # 章节、练习和里程碑
-│   ├── capstone.md           # 最终大项目规格
-│   ├── assessment.md         # 评分与验收标准
-│   └── teaching-guide.md     # 教师组织建议
-├── chapters/                 # 各章讲义与独立实验（后续逐章填充）
-├── capstone/
-│   ├── starter/              # 发给学生的起始仓库
-│   ├── tests/                # 公开测试与端到端样例
-│   └── reference/            # 教师参考实现；不要下发
-├── common/                   # 诊断、测试、CMake 等可复用设施
-└── tools/                    # IR 检查、测试驱动、结果可视化脚本
-```
+- [课程大纲（Syllabus）](docs/curriculum.md)
+- [Lecture Notes 与章节实验](chapters/README.md)
+- [MiniLang 1.0 语言规范](docs/language-spec.md)
+- [课程项目说明](docs/capstone.md)
+- [版本与平台政策](docs/version-policy.md)
+- [前沿专题与 MLIR 选修轨道](docs/frontier-tracks.md)
 
-## 章节地图
+## 课程讲义（Lecture Notes）
 
 | 章 | 主题 | 核心产物 |
 |---:|---|---|
-| 00 | 环境与工具链 | 可复现构建、`llvm-config`/CMake、lit/FileCheck 入门 |
-| 01 | IR 与执行模型 | 手写 IR，使用 verifier、`opt`、`lli` |
-| 02 | SSA 与控制流 | CFG、phi、支配关系练习 |
-| 03 | LLVM C++ API | 程序化生成并验证一个函数 |
-| 04 | Pass 与分析 | 新 Pass Manager 下的分析/变换 Pass |
-| 05 | 词法分析 | 带源码位置的 token 流 |
-| 06 | 语法分析与 AST | 优先级表达式、错误恢复、AST dump |
-| 07 | 名字解析与类型系统 | 作用域、符号表、类型检查与诊断 |
-| 08 | AST 到 LLVM IR | 表达式、局部变量、分支、循环、函数 |
-| 09 | 数据布局与 ABI | struct、array、指针、调用约定、运行时边界 |
-| 10 | JIT、AOT 与链接 | ORC JIT、目标文件、系统链接器 |
-| 11 | 优化与测试 | Pass pipeline、差分测试、性能基准 |
-| 12 | 调试信息与工具体验 | 源码位置、诊断、可选 DWARF |
-| 13 | 最终项目冲刺 | MiniLang 编译器与运行时集成 |
-| 14 | MLIR 心智模型 | operation/region/block、dialect、ODS、`mlir-opt` |
-| 15 | 自定义 Dialect | Mini dialect、verifier、canonicalization |
-| 16 | 多层 Lowering | Mini → SCF/Arith/Func → LLVM dialect → LLVM IR |
-| 17 | 张量与异构编译 | Tensor/Linalg/Vector、bufferization、GPU 映射 |
-| 18 | 可编程优化 | Transform dialect、调优空间与可复现实验 |
+| 00 | 课程概述与 LLVM 工具链 | 编译阶段、工具、版本与可复现环境 |
+| 01 | LLVM 中间表示 | 类型、值、基本块、指令与验证 |
+| 02 | 控制流与静态单赋值形式 | CFG、支配关系与 phi 指令 |
+| 03 | 使用 C++ API 构造 LLVM IR | Context、Module、IRBuilder 与 verifier |
+| 04 | LLVM 分析与变换 Pass | New Pass Manager、分析失效与插件 |
+| 05 | 词法分析 | token、源码位置与词法诊断 |
+| 06 | 语法分析与抽象语法树 | Pratt parsing、AST 与错误恢复 |
+| 07 | 静态语义与类型检查 | 作用域、名字解析、类型规则与诊断 |
+| 08 | LLVM IR 代码生成 | 表达式、局部变量、控制流与函数 |
+| 09 | 数据布局与调用约定 | 聚合类型、内存布局、ABI 与 runtime |
+| 10 | JIT 与提前编译 | ORC JIT、目标文件与链接 |
+| 11 | 优化与编译器测试 | Pass pipeline、差分测试与基准 |
+| 12 | 诊断与调试信息 | SourceManager、诊断呈现与 DWARF |
+| 13 | 课程项目：MiniLang 编译器 | 前端、后端、runtime 与工具链集成 |
+| 14 | MLIR 基础 | operation、region、block 与 dialect |
+| 15 | MLIR Dialect 定义 | ODS、verifier、trait 与 canonicalization |
+| 16 | Dialect Conversion 与逐层 Lowering | Mini → SCF/Arith/Func → LLVM dialect |
+| 17 | 张量、向量化与异构代码生成 | Linalg、Vector、bufferization 与 GPU |
+| 18 | Transform Dialect 与优化调度 | 可编程变换、调优空间与实验复现 |
 
 详细安排见 [课程大纲](docs/curriculum.md)，最终项目见 [Capstone 规格](docs/capstone.md)，前沿专题的完整路线见 [前沿专题轨道](docs/frontier-tracks.md)。
 
@@ -90,7 +77,19 @@ llvm-tutorial/
 
 所有正式讲义遵循 [教材写作规范](docs/writing-guide.md)：从真实问题出发，通过可观察实验逐步建立概念，而不是把 API 和任务清单堆给学生。
 
-## 完成标准
+## 实验与作业（Laboratories and Assignments）
+
+实验与对应讲义放在同一个章节目录中。每个实验给出 starter、公开测试、提交要求和验收标准；参考解答与学生起始代码分离。课程项目分为前端、静态语义、代码生成和工具链集成四个里程碑。
+
+## 课程项目（Course Project）
+
+课程项目要求实现一门小型静态类型语言 MiniLang。语言行为以 [MiniLang 1.0 规范](docs/language-spec.md) 为准，接口、测试要求和演示方式见 [课程项目说明](docs/capstone.md)。MLIR 后端是进阶扩展，不替代核心 LLVM IR 后端。
+
+## 参考资料（References）
+
+每章列出直接相关的 LLVM/MLIR 官方文档。参考资料用于补充 API 与形式化细节，讲义本身应提供完成实验所需的概念路径，不要求学生从外部文档自行拼凑课程。
+
+## 学习成果
 
 学生最终应能：
 

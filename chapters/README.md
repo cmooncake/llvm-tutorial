@@ -1,4 +1,4 @@
-# Chapters
+# 课程讲义（Lecture Notes）
 
 章节目录按 `NN-topic` 命名。每章 README 必须明确学习目标、先修知识、预计用时、实验步骤、提交物、验收条件和常见失败。标有 TODO 的章节仍处于设计阶段，完成状态以根目录 `ROADMAP.md` 为准。
 
