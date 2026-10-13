@@ -14,6 +14,8 @@
 
 面向学生的讲义还必须遵守 `docs/writing-guide.md`。学习目标和验收清单不能代替连贯的教学正文。
 
+中英文版本必须遵守 `docs/translation-policy.md`。涉及规范、作业行为或评分的修改应同时更新两个语言版本；尚未完成翻译的文档不得标记为 bilingual complete。
+
 ## 提交约定
 
 - `docs:`：讲义、规范和教师材料；

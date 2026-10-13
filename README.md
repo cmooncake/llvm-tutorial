@@ -1,5 +1,7 @@
 # LLVM 编译器构造
 
+[简体中文](README.md) | [English](README.en.md)
+
 这是一门面向“学过 C/C++、数据结构与基础编译原理，但没有 LLVM 工程经验”的项目制课程。
 
 课程不以照抄 Kaleidoscope 为终点，而是让学生逐步构造一门小型静态类型语言 **MiniLang** 的完整工具链：
@@ -46,6 +48,7 @@
 - [课程项目说明](docs/capstone.md)
 - [版本与平台政策](docs/version-policy.md)
 - [前沿专题与 MLIR 选修轨道](docs/frontier-tracks.md)
+- [中英文版本维护规范](docs/translation-policy.md)
 
 ## 课程讲义（Lecture Notes）
 
