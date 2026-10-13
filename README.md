@@ -88,6 +88,8 @@ llvm-tutorial/
 
 课程实现以 [MiniLang 1.0 规范](docs/language-spec.md) 为语义依据，以 [版本政策](docs/version-policy.md) 为工具链依据。当前完成度与后续里程碑记录在 [ROADMAP](ROADMAP.md)。
 
+所有正式讲义遵循 [教材写作规范](docs/writing-guide.md)：从真实问题出发，通过可观察实验逐步建立概念，而不是把 API 和任务清单堆给学生。
+
 ## 完成标准
 
 学生最终应能：
