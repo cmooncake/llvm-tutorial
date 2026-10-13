@@ -1,5 +1,7 @@
 # 评分与验收
 
+[简体中文](assessment.md) | [English](assessment.en.md)
+
 ## 总评建议
 
 | 项目 | 比例 | 观察重点 |

@@ -1,5 +1,7 @@
 # 贡献指南
 
+[简体中文](CONTRIBUTING.md) | [English](CONTRIBUTING.en.md)
+
 ## 内容完成的定义
 
 一个章节只有满足以下条件，才能从“草稿”标记为“完成”：

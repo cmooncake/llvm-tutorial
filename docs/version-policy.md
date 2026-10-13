@@ -1,5 +1,7 @@
 # 版本与平台政策
 
+[简体中文](version-policy.md) | [English](version-policy.en.md)
+
 ## 支持版本
 
 - **主教学版本：LLVM/Clang/MLIR 22.1.x**

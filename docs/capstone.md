@@ -1,5 +1,7 @@
 # 最终项目：MiniLang 编译器
 
+[简体中文](capstone.md) | [English](capstone.en.md)
+
 ## 项目目标
 
 构造一个真实可用的小型编译器，而不是 LLVM API 的薄封装。最终命令行界面建议为：

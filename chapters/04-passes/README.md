@@ -1,5 +1,7 @@
 # 第 04 章：LLVM 分析与变换 Pass
 
+[简体中文](README.md) | [English](README.en.md)
+
 预计用时：6–8 小时。先修：第 03 章。
 
 ## 学习目标
@@ -92,4 +94,9 @@ opt -load-pass-plugin "$PLUGIN" \
 - Windows DLL 加载失败：工具与插件必须使用 ABI 兼容的 LLVM 构建配置。
 - erase 后继续使用旧 iterator/value：先递增 iterator，替换 uses 后再 erase。
 - 无论是否修改都返回 `all()`：这会让下游错误复用已经失效的分析。
+
+## 参考资料
+
+- [Writing an LLVM Pass](https://llvm.org/docs/WritingAnLLVMNewPMPass.html)
+- [Using the New Pass Manager](https://llvm.org/docs/NewPassManager.html)
 

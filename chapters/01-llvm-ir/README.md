@@ -1,5 +1,7 @@
 # 第 01 章：LLVM 中间表示
 
+[简体中文](README.md) | [English](README.en.md)
+
 > 预计用时：4–6 小时。请先完成第 00 章，并确认 `llvm-as`、`opt` 和 `lli` 可以使用。
 
 上一章里，LLVM IR 是 Clang 生成的中间产物。这一章我们反过来：不写 C，也不依赖 Clang，而是直接写 IR。这样做不是为了把 `.ll` 当成日常编程语言，而是为了看清编译器后端真正接收的结构。
@@ -122,4 +124,9 @@ LLVM IR 的核心对象开始有了轮廓：函数由基本块组成，基本块
 - 完成并测试的 `classify.ll`；
 - `clamp.ll`、至少五个测试和 CFG；
 - 四份单一错误的非法 IR，以及对首次失败阶段的解释。
+
+## 参考资料
+
+- [LLVM Language Reference Manual](https://llvm.org/docs/LangRef.html)
+- [LLVM Command Guide](https://llvm.org/docs/CommandGuide/)
 

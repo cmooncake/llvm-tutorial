@@ -1,5 +1,7 @@
 # 教师组织指南
 
+[简体中文](teaching-guide.md) | [English](teaching-guide.en.md)
+
 ## 先固定什么
 
 开课前固定以下变量：

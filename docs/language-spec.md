@@ -1,5 +1,7 @@
 # MiniLang 1.0 语言规范
 
+[简体中文](language-spec.md) | [English](language-spec.en.md)
+
 本规范是核心课程的稳定输入。实现可以增加扩展，但不得悄悄改变这里定义的行为。
 
 ## 1. 词法

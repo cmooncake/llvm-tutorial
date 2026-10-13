@@ -1,5 +1,7 @@
 # 第 03 章：使用 C++ API 构造 LLVM IR
 
+[简体中文](README.md) | [English](README.en.md)
+
 预计用时：5–7 小时。先修：第 01–02 章、C++ RAII。
 
 ## 学习目标
@@ -90,4 +92,9 @@ FileCheck chapters/03-cpp-api/test/mul-add.check --input-file=generated.ll
 - block 已有 terminator 后继续插入：生成语句时传播“当前块已终结”状态。
 - phi 提前添加错误 incoming：先保存控制流结束块，再添加 incoming。
 - CMake 能找到 headers 却链接失败：headers 与 libraries 很可能来自不同 LLVM 安装。
+
+## 参考资料
+
+- [Embedding LLVM in a Project with CMake](https://llvm.org/docs/CMake.html#embedding-llvm-in-your-project)
+- [LLVM Kaleidoscope: Code Generation](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl03.html)
 

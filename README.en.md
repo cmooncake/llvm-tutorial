@@ -17,7 +17,7 @@ The final result is a compiler that can be tested, inspected, debugged, demonstr
 
 The course combines compiler principles with engineering practice. The first part uses focused laboratories to study LLVM IR, SSA, control flow, and passes. The middle part develops the MiniLang lexer, parser, and static semantics. The final part covers code generation, the runtime boundary, JIT and ahead-of-time compilation, optimization, and compiler testing. MLIR and heterogeneous code generation are optional units taken after the core project.
 
-Course organization and assessment guidance are provided in the [instructor guide](docs/teaching-guide.md) and [assessment rubric](docs/assessment.md). English translations of those documents will be added as each document reaches a stable revision.
+Course organization and assessment guidance are provided in the [instructor guide](docs/teaching-guide.en.md) and [assessment rubric](docs/assessment.en.md).
 
 ## Prerequisites
 
@@ -42,15 +42,15 @@ The core course is designed for 14–16 weeks, with one lecture and one laborato
 
 ## Course Materials
 
-- [Syllabus](docs/curriculum.md)
-- [Lecture notes and laboratories](chapters/README.md)
-- [MiniLang 1.0 language specification](docs/language-spec.md)
-- [Course project specification](docs/capstone.md)
-- [Version and platform policy](docs/version-policy.md)
-- [Advanced topics and MLIR tracks](docs/frontier-tracks.md)
+- [Syllabus](docs/curriculum.en.md)
+- [Lecture notes and laboratories](chapters/README.en.md)
+- [MiniLang 1.0 language specification](docs/language-spec.en.md)
+- [Course project specification](docs/capstone.en.md)
+- [Version and platform policy](docs/version-policy.en.md)
+- [Advanced topics and MLIR tracks](docs/frontier-tracks.en.md)
 - [Chinese–English maintenance policy](docs/translation-policy.en.md)
 
-Documents without an English link are not yet translation-complete. The Chinese document remains normative until the paired English version passes terminology and link review.
+Chinese remains normative for MiniLang 1.0. English documents mirror the same numbered requirements and share all source code and tests.
 
 ## Lecture Notes
 

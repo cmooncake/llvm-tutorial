@@ -1,5 +1,7 @@
 # 第 02 章：控制流与静态单赋值形式
 
+[简体中文](README.md) | [English](README.en.md)
+
 预计用时：5–7 小时。先修：第 01 章。
 
 ## 学习目标
@@ -112,4 +114,9 @@ fib(n) = fib(n-1) + fib(n-2), n >= 2
 - verifier 全部通过；
 - harness 能检测错误的 eager evaluation；
 - 能解释每个 phi incoming 与具体 CFG edge 的对应关系。
+
+## 参考资料
+
+- [LLVM Language Reference: Phi Instruction](https://llvm.org/docs/LangRef.html#phi-instruction)
+- [LLVM Kaleidoscope: Control Flow](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl05.html)
 

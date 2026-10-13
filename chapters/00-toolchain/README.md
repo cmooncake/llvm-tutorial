@@ -1,5 +1,7 @@
 # 第 00 章：课程概述与 LLVM 工具链
 
+[简体中文](README.md) | [English](README.en.md)
+
 > 预计用时：2–4 小时。本章不要求你理解 LLVM IR 的每个符号，我们先建立一张不会迷路的地图。
 
 ## 0.1 LLVM 工具链的组成
@@ -139,4 +141,9 @@ llc answer.opt.bc -o answer.s
 - `answer.c`、优化前后的 IR、目标汇编；
 - 带工具、输入和输出的流水线图；
 - 上述四个观察问题的简短回答。
+
+## 参考资料
+
+- [LLVM Command Guide](https://llvm.org/docs/CommandGuide/)
+- [Building LLVM with CMake](https://llvm.org/docs/CMake.html)
 
