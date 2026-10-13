@@ -1,0 +1,29 @@
+# Build trees
+build/
+build-*/
+out/
+
+# CMake and Ninja
+CMakeUserPresets.json
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+.ninja_deps
+.ninja_log
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated compiler artifacts
+*.bc
+*.o
+*.obj
+*.exe
+*.pdb
+*.profdata
+*.profraw
+

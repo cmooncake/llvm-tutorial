@@ -86,6 +86,8 @@ llvm-tutorial/
 
 详细安排见 [课程大纲](docs/curriculum.md)，最终项目见 [Capstone 规格](docs/capstone.md)，前沿专题的完整路线见 [前沿专题轨道](docs/frontier-tracks.md)。
 
+课程实现以 [MiniLang 1.0 规范](docs/language-spec.md) 为语义依据，以 [版本政策](docs/version-policy.md) 为工具链依据。当前完成度与后续里程碑记录在 [ROADMAP](ROADMAP.md)。
+
 ## 完成标准
 
 学生最终应能：

@@ -1,0 +1,7 @@
+; RUN: ir-generator | FileCheck %s
+
+; CHECK-LABEL: define i32 @mul_add(i32 %lhs, i32 %rhs)
+; CHECK: %product = mul i32 %lhs, %rhs
+; CHECK-NEXT: %result = add i32 %product, 7
+; CHECK-NEXT: ret i32 %result
+
