@@ -2,19 +2,19 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
-> Recommended duration: 4–5 weeks. The project integrates Chapters 00–12 and introduces no new core language features.
+> Graduate schedule: proposal in week 6, baseline in week 9, interim results in week 12, final package in week 16. The last 4–5 weeks focus on research and evaluation; chapter numbers are not teaching weeks.
 
-The project turns individually functioning phases into a reproducible, tested, and explainable compiler product. [`docs/capstone.md`](../../docs/capstone.md) is normative; this chapter defines execution and review order.
+The project turns individually functioning phases into a reproducible, tested, and explainable compiler product. The [project specification](../../docs/capstone.en.md) and [Scalar contract](../../docs/language-profile.en.md) define requirements; this chapter defines execution and review order.
 
 ## 13.1 Milestones
 
-**M1 Front-end Freeze:** specification, lexer, parser, AST, resolver, type checker, and diagnostic codes are stable. Invalid input produces diagnostics without crashing.
+**M1 Proposal (week 6):** freeze the Scalar core and submit a question, hypothesis, minimal implementation, baseline, and risks. L3 assesses the front end separately.
 
-**M2 Executable Core:** functions, bindings, control flow, and primitive types run through at least one execution path; every module passes the verifier.
+**M2 Executable Baseline (week 9):** functions, bindings, control flow, and primitive types execute; every module passes the verifier. Include a baseline and at least one case that must not be transformed.
 
-**M3 Runtime and Aggregates:** arrays, strings, bounds checks, runtime ABI, and JIT/AOT differential tests are complete.
+**M3 Interim Results (week 12):** submit the research increment, preliminary correctness results, raw measurements, and a reduced plan. Arrays and strings are not shared-core deliverables.
 
-**M4 Release Candidate:** optimization, test matrix, build guide, examples, known limitations, performance report, and live demonstration are complete.
+**M4 Final Package (week 16):** submit code, test matrix, reproduction steps, report, raw data, and individual contributions; complete the demonstration and defense.
 
 Every milestone builds from a clean checkout, preserves existing tests, and includes a one-page architecture decision record. A small end-to-end slice is more valuable than many unintegrated partial modules.
 
@@ -22,7 +22,7 @@ Every milestone builds from a clean checkout, preserves existing tests, and incl
 
 Review begins in a clean environment: follow the README, build, test, and compile an example. Each student explains IR containing control flow, the data path of one diagnostic, and one ABI decision.
 
-The demonstration includes a successful program, static error, runtime trap, AST or IR dump, JIT/AOT path, and one optimization supported by data. Slides do not replace execution evidence.
+The demonstration includes a successful program, static error, runtime trap, AST or IR dump, actual execution path, and data for the research increment. Identify external lli if used; a negative performance result is not automatically a failed project. Slides do not replace execution evidence.
 
 ## 13.3 Release Checklist
 
@@ -42,5 +42,6 @@ Submit source, tests, runtime, examples, language and ABI documents, architectur
 ## References
 
 - [Complete course-project specification](../../docs/capstone.en.md)
-- [MiniLang 1.0 language specification](../../docs/language-spec.en.md)
+- [MiniLang Scalar teaching contract](../../docs/language-profile.en.md)
+- [Research reports and reproduction](../../docs/project-report.en.md)
 

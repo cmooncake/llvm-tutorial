@@ -2,6 +2,8 @@
 
 [简体中文](teaching-guide.md) | [English](teaching-guide.en.md)
 
+The [graduate plan](graduate-course.en.md) provides weekly activities, discussion questions, and instructor answers. This page covers maintenance and organization. The [Scalar contract](language-profile.en.md) defines acceptance semantics; [release readiness](release-readiness.en.md) records launch status.
+
 ## Freeze Before the Course
 
 Freeze one LLVM major line, C++ and CMake requirements, MiniLang syntax and typing, the runtime ABI, platform support, and the boundary between starter and reference code. LLVM APIs evolve; every note identifies the supported course release.
@@ -17,12 +19,12 @@ Each chapter ultimately contains lecture notes, starter code, public tests, inst
 ## Risk Control
 
 - By week 3, every student builds an LLVM-dependent project from a clean environment.
-- Freeze the language by week 7.
+- Freeze the Scalar contract by week 6.
 - Provide runtime ABI conformance tests by week 9.
 - Preserve one end-to-end vertical slice at every milestone.
 - Run the reference solution on every supported platform.
 - Provide prebuilt LLVM or a container for constrained machines without hiding the toolchain model.
-- Keep MLIR, GPU, and Transform dialect optional; no core grade requires a GPU.
+- Require shared MLIR foundations/CPU lowering; specialize in GPUs, full custom dialects, or Transform as appropriate. Common acceptance needs no GPU.
 
 ## Review Priorities
 

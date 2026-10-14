@@ -1,8 +1,8 @@
-# LLVM Compiler Construction
+# LLVM and MLIR Compiler Engineering
 
 [简体中文](README.md) | [English](README.en.md)
 
-This is a project-based course for students who have studied C or C++, data structures, and introductory compiler concepts, but have not yet built software with LLVM.
+This graduate project course assumes C++, data structures, introductory compilers, and architecture, but no LLVM engineering experience. It emphasizes semantics-preserving optimization, multilevel IR, and reproducible research.
 
 The course does not stop at reproducing Kaleidoscope. Students incrementally implement the complete toolchain for **MiniLang**, a small statically typed language:
 
@@ -15,7 +15,7 @@ The final result is a compiler that can be tested, inspected, debugged, demonstr
 
 ## Course Description
 
-The course combines compiler principles with engineering practice. The first part uses focused laboratories to study LLVM IR, SSA, control flow, and passes. The middle part develops the MiniLang lexer, parser, and static semantics. The final part covers code generation, the runtime boundary, JIT and ahead-of-time compilation, optimization, and compiler testing. MLIR and heterogeneous code generation are optional units taken after the core project.
+The first half studies LLVM IR, SSA, passes, and the MiniLang Scalar front/back ends. The second develops optimization correctness, MLIR conversion, bufferization, and empirical evaluation. Shared MLIR labs are required; custom dialects, Transform, GPU, and advanced JIT systems are research specializations.
 
 Course organization and assessment guidance are provided in the [instructor guide](docs/teaching-guide.en.md) and [assessment rubric](docs/assessment.en.md).
 
@@ -30,23 +30,32 @@ Prior experience with LLVM, SSA, object-file formats, or JIT compilation is not 
 
 ## Schedule
 
-The core course is designed for 14–16 weeks, with one lecture and one laboratory per week.
+The sixteen-week course has two 90-minute discussions and one 60-minute clinic weekly, plus an estimated 8–12 hours of independent work. See the [graduate teaching plan](docs/graduate-course.en.md) for weekly activities and checks.
 
 | Unit | Weeks | Outcome |
 |---|---:|---|
 | A. LLVM foundations | 1–4 | Read, construct, verify, and execute LLVM IR |
-| B. Compiler front end | 5–8 | Implement a lexer, parser, AST, and type checker |
-| C. Back end and engineering | 9–11 | Implement lowering, runtime interfaces, JIT/AOT, and tests |
-| D. Course project | 12–16 | Integrate the language, diagnostics, optimization, documentation, and demo |
-| E. Advanced topics (optional) | 3–6 additional | MLIR, progressive lowering, heterogeneous compilation, and modern JITs |
+| B. Executable compiler core | 5–8 | Front end, typing, LLVM lowering, runtime, execution |
+| C. Optimization and MLIR | 9–11 | Correctness, staged lowering, CPU bufferization |
+| D. Research project | 12–16 | Increment, baseline, ablation, reproduction, defense |
+| E. Specialization | within 12–16 | Custom dialect, Transform, GPU, or modern JIT |
 
 ## Course Materials
+
+- [Graduate teaching plan and weekly schedule](docs/graduate-course.en.md)
+- [Assignments and scoring](docs/assignments.en.md)
+- [MiniLang Scalar teaching contract](docs/language-profile.en.md)
+- [Shared MLIR labs](docs/graduate-labs.en.md)
+- [Research reports and experimental records](docs/project-report.en.md)
+- [Release acceptance and remaining blockers](docs/release-readiness.en.md)
 
 - [Syllabus](docs/curriculum.en.md)
 - [Lecture notes and laboratories](chapters/README.en.md)
 - [MiniLang 1.0 language specification](docs/language-spec.en.md)
 - [Course project specification](docs/capstone.en.md)
 - [Version and platform policy](docs/version-policy.en.md)
+- [Building and automated tests](docs/testing.en.md)
+- [LLVM tutorial versions and environment study](docs/environment-research.en.md)
 - [Advanced topics and MLIR tracks](docs/frontier-tracks.en.md)
 - [Chinese–English maintenance policy](docs/translation-policy.en.md)
 
@@ -78,11 +87,11 @@ Chinese remains normative for MiniLang 1.0. English documents mirror the same nu
 
 ## Laboratories and Assignments
 
-Laboratories live beside their corresponding lecture notes. Each laboratory provides starter material, public tests, submission requirements, and acceptance criteria. Reference solutions remain separate from student starter code. The course project has four milestones: front end, static semantics, code generation, and toolchain integration.
+Laboratories live beside their lecture notes. Executable tests cover chapters 00–04 and three shared MLIR CPU experiments; chapters 01–02 have separate exercise and reference IR. MiniLang has a CLI shell, runtime, and public case driver, but no complete reference compiler. See [release readiness](docs/release-readiness.en.md). Project milestones are proposal, executable baseline, interim results, and final package.
 
 ## Course Project
 
-Students implement MiniLang, a small statically typed language. The MiniLang 1.0 specification defines observable language behavior; the project specification defines interfaces, tests, and the final demonstration. An MLIR back end is an advanced extension and does not replace the core LLVM IR back end.
+Students implement the [MiniLang Scalar core](docs/language-profile.en.md) and evaluate one optimization or MLIR research increment. Shared MLIR labs are required; a custom MLIR compiler back end is a specialization. This repository is a pilot candidate, not a validated turnkey semester release.
 
 ## References
 

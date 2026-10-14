@@ -51,6 +51,8 @@ opt -load-pass-plugin "$PLUGIN" \
 
 ## 4.4 测试
 
+自动回归测试从仓库根目录构建后运行：`ctest --test-dir build -R '^passes$' --output-on-failure`。完整环境和覆盖范围见[测试指南](../../docs/testing.md)。LLVM 22 的插件头文件是 `llvm/Plugins/PassPlugin.h`；旧教程中的 `llvm/Passes/PassPlugin.h` 不适用于本课程基线。这个差异已在 LLVM 22.1.8 的实际编译中核对。
+
 ```sh
 opt -load-pass-plugin "$PLUGIN" \
   -passes=remove-add-zero -S test/add-zero.ll \
@@ -96,6 +98,8 @@ opt -load-pass-plugin "$PLUGIN" \
 - 无论是否修改都返回 `all()`：这会让下游错误复用已经失效的分析。
 
 ## 参考资料
+
+- [LLVM 22.1.8 PassPlugin 接口](https://github.com/llvm/llvm-project/blob/llvmorg-22.1.8/llvm/include/llvm/Plugins/PassPlugin.h)
 
 - [Writing an LLVM Pass](https://llvm.org/docs/WritingAnLLVMNewPMPass.html)
 - [Using the New Pass Manager](https://llvm.org/docs/NewPassManager.html)

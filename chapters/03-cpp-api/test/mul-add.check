@@ -1,4 +1,4 @@
-; RUN: ir-generator | FileCheck %s
+; Executed by the root CTest suite using the actual CMake executable target path.
 
 ; CHECK-LABEL: define i32 @mul_add(i32 %lhs, i32 %rhs)
 ; CHECK: %product = mul i32 %lhs, %rhs

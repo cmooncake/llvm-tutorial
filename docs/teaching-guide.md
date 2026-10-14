@@ -2,6 +2,8 @@
 
 [简体中文](teaching-guide.md) | [English](teaching-guide.en.md)
 
+研究生版的周计划、课堂问题与参考答案见[研究生教案](graduate-course.md)。本页用于教师维护与组织；语义以 [Scalar 契约](language-profile.md) 为准，开课状态以[发布验收](release-readiness.md)为准。
+
 ## 先固定什么
 
 开课前固定以下变量：
@@ -48,12 +50,12 @@ README 的结尾必须写清：提交物、运行命令、验收条件、常见�
 ## 控制课程风险
 
 - 第 3 周前确认所有学生能在干净环境构建 LLVM 依赖项目。
-- 第 7 周冻结语言规范；之后只修歧义，不新增核心语法。
+- 第 6 周冻结 Scalar 契约；之后只修歧义，不新增核心语法。
 - 第 9 周提供 runtime ABI conformance test，防止集成期才发现调用约定问题。
 - 每个里程碑保留一个“纵向切片”：哪怕功能少，也能从源码走到执行结果。
 - reference solution 每周在全部受支持平台跑 CI。
 - 为机器配置较弱的学生提供预构建 LLVM 或容器方案，但仍要求理解工具链。
-- MLIR、GPU 与 Transform dialect 独立成选修层；核心课程不得依赖特定 GPU。
+- MLIR 基础与 CPU lowering 是公共必修；GPU、完整自定义 dialect 与 Transform 深化按项目方向开设，公共验收不依赖 GPU。
 - MLIR 作业固定到与 LLVM 相同的发布线，并保存每一层 IR fixture，降低 API 演进带来的维护成本。
 
 ## 推荐的反馈方式

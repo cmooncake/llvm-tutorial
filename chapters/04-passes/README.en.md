@@ -24,6 +24,8 @@ Integer `x + 0 -> x` is valid, including in the presence of `nsw/nuw`, because r
 
 ## 4.4 Testing
 
+After building from the repository root, run `ctest --test-dir build -R '^passes$' --output-on-failure`. See the [testing guide](../../docs/testing.en.md) for setup and coverage. LLVM 22 uses `llvm/Plugins/PassPlugin.h`; the older `llvm/Passes/PassPlugin.h` path does not apply to this baseline. This difference was checked during an actual LLVM 22.1.8 build.
+
 Use FileCheck for right zero, left zero, nonzero constants, and floating-point non-transformation. Verify output IR and avoid complete golden snapshots.
 
 ## Laboratory 4: Analysis Results and Invalidation
@@ -47,6 +49,8 @@ Implement unreachable-block removal, a stable opcode histogram, or integer `sub 
 Check exported plugin information and pipeline names when `opt` cannot find a pass. Advance iterators before erasing instructions. Returning `all()` after a real change can cause stale analyses to be reused.
 
 ## References
+
+- [LLVM 22.1.8 PassPlugin interface](https://github.com/llvm/llvm-project/blob/llvmorg-22.1.8/llvm/include/llvm/Plugins/PassPlugin.h)
 
 - [Writing an LLVM Pass](https://llvm.org/docs/WritingAnLLVMNewPMPass.html)
 - [Using the New Pass Manager](https://llvm.org/docs/NewPassManager.html)

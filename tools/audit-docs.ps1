@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
 $markdown = Get-ChildItem -LiteralPath $root -Recurse -File -Filter '*.md' |
-  Where-Object { $_.FullName -notmatch '[\\/]\.git[\\/]' }
+  Where-Object { $_.FullName -notmatch '[\\/](\.git|build[^\\/]*|out)[\\/]' }
 $errors = [System.Collections.Generic.List[string]]::new()
 
 foreach ($file in $markdown) {

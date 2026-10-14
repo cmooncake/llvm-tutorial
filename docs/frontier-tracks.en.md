@@ -2,6 +2,8 @@
 
 [简体中文](frontier-tracks.md) | [English](frontier-tracks.en.md)
 
+The graduate course requires MLIR foundations, staged lowering, and CPU bufferization; see the [shared labs](graduate-labs.en.md). This page catalogs further research choices. Suggested specialization durations fit within weeks 12–16, not additional compulsory weeks after the semester.
+
 Advanced units study how modern compilers retain high-level semantics, compose multi-level transformations, target heterogeneous hardware, and make optimization strategies verifiable and reproducible.
 
 ## Why MLIR Follows LLVM IR

@@ -1,0 +1,39 @@
+name: LLVM and MLIR course tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  llvm-22:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the course SDK
+        run: sudo bash tools/setup-ubuntu.sh
+      - name: Configure
+        run: >-
+          cmake -S . -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=Release
+          -DTUTORIAL_ENABLE_MLIR=ON
+          -DCMAKE_C_COMPILER=/usr/lib/llvm-22/bin/clang
+          -DCMAKE_CXX_COMPILER=/usr/lib/llvm-22/bin/clang++
+          -DLLVM_DIR=/usr/lib/llvm-22/lib/cmake/llvm
+      - name: Record exact package versions
+        run: |
+          /usr/lib/llvm-22/bin/llvm-config --version | tee build/llvm-version.txt
+          dpkg-query -W > build/packages.txt
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure --output-junit results.xml
+      - name: Save test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: llvm-22-test-evidence
+          path: |
+            build/results.xml
+            build/llvm-version.txt
+            build/packages.txt
+            build/Testing/Temporary/*.log
+            build/mlir-artifacts/

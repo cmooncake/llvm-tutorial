@@ -1,8 +1,8 @@
-# LLVM 编译器构造
+# LLVM 与 MLIR 编译器工程
 
 [简体中文](README.md) | [English](README.en.md)
 
-这是一门面向“学过 C/C++、数据结构与基础编译原理，但没有 LLVM 工程经验”的项目制课程。
+这是一门面向研究生的项目制课程。学生已学过 C++、数据结构、基础编译原理和体系结构，但不需要 LLVM 工程经验；课程重点是语义保持的优化、多层 IR 与可复现的研究实验。
 
 课程不以照抄 Kaleidoscope 为终点，而是让学生逐步构造一门小型静态类型语言 **MiniLang** 的完整工具链：
 
@@ -15,7 +15,7 @@
 
 ## 课程说明
 
-课程同时包含编译器原理与工程实践。前半部分通过短实验学习 LLVM IR、SSA、控制流和 Pass；中段实现 MiniLang 的词法、语法和静态语义；后半部分完成代码生成、运行时、JIT/AOT、优化和测试。MLIR 与异构代码生成作为完成核心项目后的选修单元。
+前半学期通过短实验学习 LLVM IR、SSA、Pass 和 MiniLang Scalar 前后端；后半学期研究优化正确性、MLIR conversion、bufferization 与实验评估。MLIR 公共实验为必修，自定义 dialect、Transform、GPU 和高级 JIT 作为研究方向。
 
 教学设计、授课节奏和评分建议见 [教师指南](docs/teaching-guide.md) 与 [评分标准](docs/assessment.md)。
 
@@ -30,24 +30,33 @@
 
 ## 课程安排
 
-建议 14–16 周，每周一次讲授和一次实验：
+采用 16 周制，每周两次 90 分钟讨论和一次 60 分钟实验诊所，课外预计 8–12 小时。完整周次、课堂问题与验收见[研究生教案](docs/graduate-course.md)。
 
 | 阶段 | 周数 | 目标 |
 |---|---:|---|
 | A. LLVM 基础 | 1–4 | 能阅读、生成、验证和执行 LLVM IR |
-| B. 编译器部件 | 5–8 | 独立完成 lexer、parser、AST、类型检查 |
-| C. 后端与工程化 | 9–11 | 完成 IR lowering、运行时、JIT/AOT 和测试 |
-| D. 最终项目 | 12–16 | 集成完整语言、优化、诊断、文档与演示 |
-| E. 前沿专题（选修） | 额外 3–6 | MLIR、多层 lowering、异构编译与现代 JIT |
+| B. 可执行编译器核心 | 5–8 | 前端、类型检查、LLVM lowering、运行时与执行 |
+| C. 优化与 MLIR | 9–11 | 正确性、逐层 lowering、CPU bufferization |
+| D. 研究项目 | 12–16 | 实现增量、基线、消融、复现与答辩 |
+| E. 专题方向 | 融入 12–16 | 自定义 dialect、Transform、GPU 或现代 JIT |
 
 ## 课程材料
+
+- [研究生教案与逐周安排](docs/graduate-course.md)
+- [作业说明与分项评分](docs/assignments.md)
+- [MiniLang Scalar 教学契约](docs/language-profile.md)
+- [MLIR 公共实验](docs/graduate-labs.md)
+- [研究报告与实验记录](docs/project-report.md)
+- [课程发布验收与剩余阻断项](docs/release-readiness.md)
 
 - [课程大纲（Syllabus）](docs/curriculum.md)
 - [Lecture Notes 与章节实验](chapters/README.md)
 - [MiniLang 1.0 语言规范](docs/language-spec.md)
 - [课程项目说明](docs/capstone.md)
 - [版本与平台政策](docs/version-policy.md)
-- [前沿专题与 MLIR 选修轨道](docs/frontier-tracks.md)
+- [构建与自动测试](docs/testing.md)
+- [LLVM 教程的版本与环境调研](docs/environment-research.md)
+- [前沿专题与 MLIR 研究方向](docs/frontier-tracks.md)
 - [中英文版本维护规范](docs/translation-policy.md)
 
 ## 课程讲义（Lecture Notes）
@@ -76,17 +85,17 @@
 
 详细安排见 [课程大纲](docs/curriculum.md)，最终项目见 [Capstone 规格](docs/capstone.md)，前沿专题的完整路线见 [前沿专题轨道](docs/frontier-tracks.md)。
 
-课程实现以 [MiniLang 1.0 规范](docs/language-spec.md) 为语义依据，以 [版本政策](docs/version-policy.md) 为工具链依据。当前完成度与后续里程碑记录在 [ROADMAP](ROADMAP.md)。
+课程共同实现以 [MiniLang Scalar 契约](docs/language-profile.md) 为语义依据，以 [版本政策](docs/version-policy.md) 为工具链依据；完整语言草案仅供扩展参考。当前完成度与后续里程碑记录在 [ROADMAP](ROADMAP.md)。
 
 所有正式讲义遵循 [教材写作规范](docs/writing-guide.md)：从真实问题出发，通过可观察实验逐步建立概念，而不是把 API 和任务清单堆给学生。
 
 ## 实验与作业（Laboratories and Assignments）
 
-实验与对应讲义放在同一个章节目录中。每个实验给出 starter、公开测试、提交要求和验收标准；参考解答与学生起始代码分离。课程项目分为前端、静态语义、代码生成和工具链集成四个里程碑。
+实验与对应讲义放在同一个章节目录中。目前可执行测试覆盖第 00–04 章与三个 MLIR CPU 实验，第 01–02 章已有独立练习与参考 IR。MiniLang 已有 CLI 外壳、runtime 与公开验收驱动，尚无完整参考编译器，详见[发布验收](docs/release-readiness.md)。课程项目的四个里程碑为提案、可执行基线、中期结果和最终包。
 
 ## 课程项目（Course Project）
 
-课程项目要求实现一门小型静态类型语言 MiniLang。语言行为以 [MiniLang 1.0 规范](docs/language-spec.md) 为准，接口、测试要求和演示方式见 [课程项目说明](docs/capstone.md)。MLIR 后端是进阶扩展，不替代核心 LLVM IR 后端。
+课程项目要求实现 MiniLang Scalar，并研究一个明确的编译问题。研究生版共同验收以 [Scalar 契约](docs/language-profile.md) 为准，接口与演示见[课程项目说明](docs/capstone.md)。MLIR 后端不替代核心 LLVM IR 理解；张量或完整第二后端按项目范围验收。当前为试讲候选版，尚未具备完整参考编译器与教学试评结果。
 
 ## 参考资料（References）
 

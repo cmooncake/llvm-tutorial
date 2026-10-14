@@ -2,7 +2,7 @@
 
 [简体中文](language-spec.md) | [English](language-spec.en.md)
 
-This document is normative for the core course. Implementations may add extensions but must not silently alter the behavior defined here.
+This page preserves the comprehensive language design and grammar background. The [MiniLang Scalar contract](language-profile.en.md) governs graduate common acceptance and semantic ambiguities. Arrays require a separately completed construction/ABI extension, not a frozen common requirement.
 
 ## 1. Lexical Structure
 

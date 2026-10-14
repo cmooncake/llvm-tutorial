@@ -12,11 +12,11 @@ Separating these stages gives failures a location. Instead of saying “the IDE 
 
 ## 0.2 Environment and Version Consistency
 
-Run `./tools/check-env.ps1` in PowerShell or `./tools/check-env.sh` in a Unix shell. Compare the major versions of Clang, `llvm-config`, `opt`, `llc`, and `lli`. Later C++ work also requires LLVM headers, libraries, and `LLVMConfig.cmake`; a standalone Clang driver is insufficient.
+Run `sh tools/check-env.sh` from the repository root in Ubuntu/WSL. The PowerShell script remains an auxiliary native-Windows diagnostic, not the recommended course entry point. These scripts check that tools start; after building, `ctest --test-dir build -R '^environment$'` automatically compares SDK tool versions. Later C++ work also requires LLVM headers, libraries, and `LLVMConfig.cmake`; a standalone Clang driver is insufficient.
 
 ### Platform Notes
 
-Ubuntu may use distribution or official LLVM packages. Windows may use a complete LLVM development installation with Visual Studio/ClangCL or work entirely inside WSL2. macOS requires a full LLVM package in addition to AppleClang. Do not mix Windows, WSL, and unrelated LLVM installations in one build tree.
+The course uses Ubuntu 24.04 and LLVM 22.1.x. Windows students should build and test inside WSL2 Ubuntu 24.04; see the [testing guide](../../docs/testing.en.md) for installation commands. Native Windows and macOS are unverified. A regular Clang installer is not necessarily a full LLVM development SDK. Do not mix Windows and WSL installations in one build tree.
 
 ## 0.3 Compilation Pipeline
 

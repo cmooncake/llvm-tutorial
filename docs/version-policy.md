@@ -5,20 +5,25 @@
 ## 支持版本
 
 - **主教学版本：LLVM/Clang/MLIR 22.1.x**
-- **兼容版本：LLVM/Clang/MLIR 21.1.x**
+- LLVM 21/23 暂不支持；此前的 21.1 兼容声明没有运行证据，现已撤回。
 - C++：C++20
 - CMake：3.20 或更高
 - 推荐生成器：Ninja
+- Python：3.10 或更高（测试仅依赖标准库）
 
-课程只保证同一 LLVM 发布线内的最新修订版。不要混用不同大版本的 LLVM headers、libraries 与命令行工具。
+apt 安装固定 22 发布线，不固定补丁和包修订。CI 记录精确软件包清单，但尚未发布冻结镜像，不能声称逐字节可复现。授课前应冻结通过测试的镜像摘要或软件包快照；升级必须重跑测试。LLVM headers、libraries 与工具应来自同一 SDK，测试检查补丁版本一致。
 
 ## 支持平台
 
 | 平台 | 编译器 | 状态 |
 |---|---|---|
-| Ubuntu 24.04 x86-64 | Clang | 主 CI 平台 |
-| Windows 11 x86-64 | MSVC 或 ClangCL | 主桌面平台 |
-| macOS arm64 | AppleClang | 尽力支持 |
+| Ubuntu 24.04 x86-64 | Clang 22 | 教学基线与 CI 配置目标 |
+| Windows + WSL2 Ubuntu 24.04 | WSL 内的 Clang 22 | 推荐的 Windows 学习方式 |
+| 原生 Windows、macOS | 尚未确定 | 未验证，不承诺支持 |
+
+选择依据见[环境调研](environment-research.md)，安装、覆盖范围与真实执行记录见[测试指南](testing.md)。有 CI 配置不代表远程 CI 已通过。本课程的环境选择不代表高校或 LLVM 官方统一推荐。
+
+MLIR 公共实验使用同版 `mlir-22-tools`，已在 22.1.8 实测三个 CPU 实验；开启 `-DTUTORIAL_ENABLE_MLIR=ON` 后检查精确版本。自定义 dialect 开发需要同版 MLIR 开发库，或从同一个 llvm-project 发布 tag 构建 LLVM、Clang 与 MLIR；不能混用系统 LLVM 和 main 分支 MLIR。GPU、Transform 与自定义 dialect 的完整课程实现尚未验证。
 
 GPU 专题不属于核心平台门槛。没有受支持 GPU 时，学生仍可生成、检查和 lower GPU dialect，并以 CPU pipeline 完成基础验收。
 
@@ -45,7 +50,7 @@ ninja --version
 3. 再编译 C++ API 和 Pass；
 4. 最后升级 MLIR dialect 与 conversion；
 5. 把 API 变化记录到 `docs/compatibility/llvm-N.md`；
-6. 两条支持线并行通过后，再更新主教学版本。
+6. 候选版本通过后，再更新主教学版本，不自动承诺双版本兼容。
 
 ## 官方依据
 

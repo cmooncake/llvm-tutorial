@@ -6,12 +6,21 @@
 
 | Component | Weight | Evidence |
 |---|---:|---|
-| Chapter laboratories | 30% | concepts, tests, timely feedback |
-| M1–M4 milestones | 20% | integration, stable interfaces, risk management |
-| Final implementation | 25% | correctness, completeness, architecture |
-| Tests and diagnostics | 10% | positive/negative cases and regression protection |
-| Design document and defense | 10% | explanation of IR, semantics, and ABI |
-| Engineering collaboration | 5% | incremental commits, review, issue records |
+| L1–L5 assignments | 40% | 6, 10, 8, 8, 8 points respectively |
+| Four reading discussions | 10% | 2.5 each: claim, assumptions, refuting experiment |
+| M1–M3 milestones | 15% | 5 each: question, baseline, interim evidence |
+| M4 research artifact and report | 25% | correctness 8, design 5, evaluation 8, reproduction 4 |
+| Individual defense and contribution | 10% | semantics/IR explanation 6, contribution evidence 4 |
+
+These are the graduate course's authoritative weights, totaling 100%. L0 is ungraded; M4 is not counted again as a milestone. Do not award implementation, testing, or collaboration credit twice for the same evidence.
+
+## Performance levels and feedback
+
+For each subcriterion, justify full credit for complete independent evidence, roughly 70% for a sound core with missing boundaries, roughly 40% for reproducible partial work with key defects, and zero for no inspectable artifact. Do not grade code volume. Semantic errors affect correctness and dependent experimental claims, not unrelated sound theoretical work.
+
+M1 awards 2 for the question, 2 for a measurable hypothesis/baseline, and 1 for scope/risk. M2 awards 3 for an executable baseline and 2 for negative cases/records. M3 awards 2 for correctness evidence, 2 for raw results, and 1 for plan revision. Rigorous negative results are valid; speedup magnitude is not a grading formula. Speedups without a valid baseline earn no evaluation credit.
+
+Hidden inputs must trace to public Scalar rules; instructors publish semantic errata. Infrastructure failures receive a uniform rerun opportunity rather than a student penalty. Individual credit is not determined solely by commit counts or peer ratings.
 
 ## Final Project Rubric
 

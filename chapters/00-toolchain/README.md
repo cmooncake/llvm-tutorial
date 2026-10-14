@@ -16,23 +16,19 @@
 
 本课程的主版本记录在 [`docs/version-policy.md`](../../docs/version-policy.md)。LLVM 的命令行工具和 C++ 库需要来自兼容的发布线。一个常见而隐蔽的问题是：`clang` 来自一套安装，`opt` 来自另一套安装，CMake 又找到了第三套 headers。前几章也许还能工作，等到编译 Pass 插件时才暴露 ABI 或 API 不一致。
 
-在仓库根目录运行环境检查：
-
-```powershell
-./tools/check-env.ps1
-```
-
-在 Unix shell 中运行：
+在课程使用的 Ubuntu/WSL 终端中，从仓库根目录运行环境检查：
 
 ```sh
-./tools/check-env.sh
+sh tools/check-env.sh
 ```
+
+`tools/check-env.ps1` 保留作原生 Windows 的辅助诊断，但不是本课程推荐的环境入口。环境脚本检查工具能否启动；构建后的 `ctest --test-dir build -R '^environment$'` 进一步自动核对 SDK 工具版本。
 
 不要看到一串绿色的 `[ok]` 就立刻关闭终端。把版本号放在一起看：`clang`、`llvm-config`、`opt`、`llc` 和 `lli` 的主版本是否一致？如果不一致，先解决环境问题。课程后面的 bug 已经足够有意思，不需要再混入工具链偶然性。
 
 ### 平台说明
 
-Ubuntu 可以使用发行版软件包或 LLVM 官方安装方式；Windows 推荐使用完整 LLVM 开发包配合 Visual Studio 2022/ClangCL，也可以选择完全工作在 WSL2 中；macOS 除了 AppleClang，还需要包含 `opt`、`llc`、开发库和 CMake 配置的 LLVM 安装。
+本课程统一使用 Ubuntu 24.04 与 LLVM 22.1.x，Windows 学生推荐在 WSL2 Ubuntu 24.04 中完成构建和测试。具体安装命令见[测试指南](../../docs/testing.md)。原生 Windows 和 macOS 尚未验证；不要把普通 Clang 安装包等同于完整的 LLVM 开发 SDK。
 
 关键不是选择哪一种包管理器，而是满足两点：命令行工具齐全，以及后续 C++ 项目能找到 `LLVMConfig.cmake`。只装一个能编译 C++ 的 `clang` 还不够。
 

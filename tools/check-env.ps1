@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$required = @('clang', 'llvm-config', 'opt', 'llc', 'lli', 'cmake', 'ninja')
+$required = @('clang', 'llvm-config', 'opt', 'llc', 'lli', 'llvm-as', 'llvm-dis', 'llvm-link', 'FileCheck', 'cmake', 'ninja', 'python')
 $failed = $false
 
 foreach ($name in $required) {
@@ -11,7 +11,13 @@ foreach ($name in $required) {
     continue
   }
 
-  $firstLine = (& $name --version 2>&1 | Select-Object -First 1)
+  $output = & $name --version 2>&1
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[failed] $name - $output" -ForegroundColor Red
+    $failed = $true
+    continue
+  }
+  $firstLine = $output | Select-Object -First 1
   Write-Host "[ok] $name - $firstLine" -ForegroundColor Green
 }
 

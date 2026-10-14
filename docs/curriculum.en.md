@@ -2,6 +2,8 @@
 
 [简体中文](curriculum.md) | [English](curriculum.en.md)
 
+This is a topic catalog. The [graduate plan](graduate-course.en.md) and [assignments](assignments.en.md) define weeks, required scope, and grading. Aggregates in Chapter 09, dual execution back ends in Chapter 10, and full debug information in Chapter 12 are specialization material, not shared acceptance gates.
+
 Each chapter follows a common structure: objectives, conceptual model, worked example, laboratory, independent exercise, and acceptance evidence. Lecture code explains a concept; submitted code passes automated tests and includes a short design note.
 
 ## Unit A: LLVM Foundations
@@ -38,9 +40,11 @@ Each chapter follows a common structure: objectives, conceptual model, worked ex
 
 ## Unit D: Course Project
 
-**13 The MiniLang Compiler.** Complete M1 front-end freeze, M2 executable core, M3 runtime and aggregates, and M4 release candidate. Every milestone builds from a clean checkout and retains a working vertical slice.
+**13 The MiniLang Compiler.** Complete M1 proposal and Scalar scope freeze (week 6), M2 executable baseline (week 9), M3 interim results and raw data (week 12), and M4 final code, reproduction package, report, and defense (week 16). Every milestone preserves a working vertical slice.
 
 ## Unit E: Advanced MLIR Track
+
+Chapter 14 foundations, Chapter 16 standard-dialect lowering, and Chapter 17 CPU bufferization are shared required labs. Custom dialects, Transform, and GPU are research specializations. The topics below are not a cumulative submission checklist.
 
 **14 MLIR Fundamentals.** Study operations, regions, blocks, dialects, verification, and `mlir-opt`.
 

@@ -13,17 +13,17 @@ minilang run program.ml
 minilang build program.ml -o program
 ```
 
-The first course offering freezes syntax and semantics so students solve compiler problems rather than simultaneously designing a language.
+The [MiniLang Scalar contract](language-profile.en.md) defines the shared core. `check`, `emit-ir`, and `run` are required; `build` is an AOT extension. Every graduate project adds one evaluable optimization or MLIR research increment. Submit M1 proposal in week 6, M2 executable baseline in week 9, M3 interim results in week 12, and M4 final package in week 16; see the [report requirements](project-report.en.md).
 
 ## Required Language
 
-- `i32`, `bool`, `unit`, fixed-element arrays, and string slices
+- `i32` and `bool`; `unit` denotes a valueless result, not a stored variable type; arrays and strings require a separately specified extension
 - immutable `let`, mutable `var`, and function definitions
 - arithmetic, comparison, short-circuit logic, and calls
 - blocks, `if/else`, `while`, and `return`
 - lexical scope, shadowing, and same-scope duplicate rejection
 - located lexical, syntax, resolution, and type errors
-- at least one of JIT or AOT; excellent projects share code generation across both
+- at least one reliable execution path; external `lli` is allowed but is not evidence of implementing an ORC JIT
 
 ## Architecture
 
@@ -55,6 +55,8 @@ Use many front-end unit tests, a moderate number of semantic and IR regression t
 
 ## Advanced Extensions
 
+Every graduate project must select one research question with a baseline, correctness argument, counterexamples, and experimental data. The following are alternatives, not a cumulative feature checklist. Engineering extensions must not displace the shared MLIR labs or research evaluation.
+
 Possible extensions include a custom optimization, closures, monomorphized generics, tracing GC or reference counting, DWARF, modules, WebAssembly, LSP support, an MLIR Mini dialect, a MiniTensor/Linalg pipeline, or Transform dialect schedules. Grade boundaries, tests, and evidence before feature count.
 
 ### Additional MLIR Requirements
@@ -63,5 +65,5 @@ An MLIR project defines at least one semantic Mini operation, verifier and legal
 
 ## Demonstration
 
-Build and run a program with calls, loops, arrays, and strings; show a located type error; explain a phi or memory operation in AST/IR output; show a JIT or AOT artifact path; and justify one optimization or engineering decision with data.
+Build and run a Scalar program with calls, loops, and conditionals; demonstrate aggregate extensions separately if selected. Show a located type error, explain a phi or memory operation, trace source to execution while identifying external tools, and justify one optimization or engineering decision with data.
 

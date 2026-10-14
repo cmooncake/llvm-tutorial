@@ -2,6 +2,8 @@
 
 [简体中文](frontier-tracks.md) | [English](frontier-tracks.en.md)
 
+研究生版已经将 MLIR 基础、逐层 lowering 与 CPU bufferization 纳入必修，见[公共实验](graduate-labs.md)。本页是进一步选题的目录；专题建议时长在第 12–16 周内安排，不是全部追加到学期末。
+
 前沿专题的目标不是追逐新 API，而是让学生接触现代编译器的核心问题：如何保留高层语义、如何组合多级变换、如何面向异构硬件，以及如何使优化策略可验证、可搜索和可复现。
 
 ## 为什么在 LLVM IR 之后学习 MLIR

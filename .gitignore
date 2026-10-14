@@ -1,4 +1,5 @@
 # Build trees
+__pycache__/
 build/
 build-*/
 out/

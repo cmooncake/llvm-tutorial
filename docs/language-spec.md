@@ -2,7 +2,7 @@
 
 [简体中文](language-spec.md) | [English](language-spec.en.md)
 
-本规范是核心课程的稳定输入。实现可以增加扩展，但不得悄悄改变这里定义的行为。
+本页保留综合语言设计与语法背景。研究生版必做范围和语义歧义以 [MiniLang Scalar 契约](language-profile.md) 为准；数组属于需另行补全构造与 ABI 的扩展，不是已冻结的共同验收要求。
 
 ## 1. 词法
 
